@@ -1,21 +1,22 @@
 #include <stdio.h>
 #include <unistd.h>
+#include <signal.h>
 
 int main()
 
 {
 
-pid_t pid1;
-pid_t pid2;
+pid_t pid;
 /* process id */
 
-printf("\njust one process before the fork()\n");
 
-pid1 = fork();
-pid2 = fork();
+pid = fork();
 
-printf("\nThe Process id of child 1:	%d\n",pid1);
+printf("\nThe Process id of created process:	%d",pid);
 
-printf("\nThe Process id of child 2:	%d\n",pid2);
+kill(pid,SIGKILL);
+
+printf("\nThe process created is terminated\n");
+
 
 }
